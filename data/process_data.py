@@ -4,8 +4,8 @@ from sqlalchemy import create_engine
 
 def load_data(messages_filepath, categories_filepath):
     '''
-    Loads messages csv (at messages_filepath) and categories csv (at categories_filepath) and merges them into a pandas dataframe.
-    Returns merged dataframe
+    Loads messages csv file (located at `messages_filepath`) and categories csv file (at `categories_filepath`) and merges them into a pandas dataframe.
+    Returns merged dataframe.
     '''
     
     messages = pd.read_csv(messages_filepath)
@@ -18,33 +18,33 @@ def load_data(messages_filepath, categories_filepath):
 
 def clean_data(df):
     '''
-    Cleans pandas dataframe df as follows:
-    - The last column (i.e. the category column) is split up into multiple columns for each possible category
-    - Each column contains either a zero or one
-    - Duplicate rows are removed
-    - Returns cleaned df 
+    Cleans pandas dataframe `df` as follows:
+    - The last column (i.e., the category column) is split up into multiple columns for each possible category.
+    - Each column contains either a zero or a one.
+    - Duplicate rows are removed.
+    - Returns cleaned dataframe.
     '''
-    ##### create a separate dataframe with individual category columns #####
+    ##### Create a new `categories` dataframe containing individual category columns. #####
     categories_from_df = df.iloc[:,-1]
     categories = categories_from_df.str.split(";", expand = True)
     
-    # use the first row to extract a list of new column names for categories.
+    # Use the first row to extract a list of new column names for categories.
     row = categories.iloc[0,:]
     category_colnames = [row[:-2] for row in row]
     categories.columns = category_colnames
     
-    # Convert category values to just 0 or 1
+    # Convert category values to just 0 or 1.
     for column in categories:
-        # set each value to be the last character of the string
+        # Set each value to be the last character of the string.
         categories[column] = categories[column].astype(str).str.slice(-1,-2,-1)
     
-        # convert column from string to numeric
+        # Convert column from string to numeric.
         categories[column] = categories[column].astype(int)
         
     ##### Replace categories column in df with new category columns #####
-    # drop the original categories column from `df`
+    # Drop the original categories column from `df`.
     df.drop(columns='categories', inplace = True)
-    # concatenate the original dataframe with the new `categories` dataframe
+    # Concatenate the original dataframe with the new `categories` dataframe.
     df = pd.concat([df, categories], axis=1)  
     df = df.drop_duplicates().reset_index() # Drop duplicates
     return  df
@@ -52,21 +52,20 @@ def clean_data(df):
 
 def save_data(df, database_filename):
     ''' 
-    Saves df to sql database 
-    The name of the database file is database_filename
-    The name of the table in the database is also database_filename (without .db)
+    Saves df to sql database. 
+    The name of the database file is `database_filename`.
+    The name of the table in the database is also `database_filename` (without .db).
     '''
     
     engine = create_engine('sqlite:///'+database_filename)
     df.to_sql(database_filename[:-3], engine, index=False)
-    
-    pass  
 
 
 def main():
     ''' Loads, cleans and saves data to a database'''
     if len(sys.argv) == 4:
 
+        # Collects arguments into their appropriate variables
         messages_filepath, categories_filepath, database_filepath = sys.argv[1:]
 
         print('Loading data...\n    MESSAGES: {}\n    CATEGORIES: {}'
