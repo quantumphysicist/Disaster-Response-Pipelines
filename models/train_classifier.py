@@ -2,15 +2,44 @@ import sys
 
 
 def load_data(database_filepath):
-    pass
+    engine = create_engine('sqlite:///'+database_filepath)
+    table_name = database_filepath.split("\\")[-1]
+    table_name = table_name[:-3]
+    query = 'SELECT * FROM '+ table_name
+    
+    # Read query into a DataFrame
+    df = pd.read_sql(sql=query, con=engine)
+    
+    X = df.message.values
+    category_names = [column for column in df.columns if column not in ['id', 'message', 'original', 'genre']]
+    Y = df[category_names].values
+    
+    return X, Y, category_names
 
 
 def tokenize(text):
-    pass
+    tokens = word_tokenize(text)
+    lemmatizer = WordNetLemmatizer()
+    
+    clean_tokens = []
+    for token in tokens:
+        clean_token = lemmatizer.lemmatize(token).lower().strip()
+        clean_tokens.append(clean_token)
+        
+    return clean_tokens
 
 
 def build_model():
-    pass
+    pipeline = Pipeline([
+    ('vect', CountVectorizer(tokenizer=tokenize)),
+    ('tfidf', TfidfTransformer()),
+    ('clf', MultiOutputClassifier(AdaBoostClassifier()))])
+
+    parameters  = {'clf__estimator__n_estimators': 3}
+      
+    #cv = GridSearchCV(pipeline, param_grid=parameters)
+    pipeline.set_params(**parameters)
+    return pipeline
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
@@ -18,7 +47,8 @@ def evaluate_model(model, X_test, Y_test, category_names):
 
 
 def save_model(model, model_filepath):
-    pass
+    with open(model_filepath, 'wb') as the_file:
+        pickle.dump(model, the_file)
 
 
 def main():

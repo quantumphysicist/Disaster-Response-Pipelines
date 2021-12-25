@@ -3,10 +3,20 @@ import pandas as pd
 from sqlalchemy import create_engine
 
 def load_data(messages_filepath, categories_filepath):
-    '''
-    Loads messages csv file (located at `messages_filepath`) and categories csv file (at `categories_filepath`) and merges them into a pandas dataframe.
-    Returns merged dataframe.
-    '''
+    """
+    Loads and merges messages data file and categories data file into a pandas dataframe.
+    
+    Parameters
+    ----------
+    messages_filepath : csv file location
+    
+    categories_filepath : csv file location.
+    
+    Returns
+    -------
+    pandas dataFrame
+    
+    """
     
     messages = pd.read_csv(messages_filepath)
     categories = pd.read_csv(categories_filepath)
@@ -17,13 +27,24 @@ def load_data(messages_filepath, categories_filepath):
 
 
 def clean_data(df):
-    '''
-    Cleans pandas dataframe `df` as follows:
-    - The last column (i.e., the category column) is split up into multiple columns for each possible category.
-    - Each column contains either a zero or a one.
-    - Duplicate rows are removed.
-    - Returns cleaned dataframe.
-    '''
+    """
+    Cleans pandas dataframe `df` as follows.
+    
+    1. The last column (i.e., the category column) is split up into multiple columns for each possible category.
+    2. Each column contains either a zero or a one.
+    3. Duplicate rows are removed.
+    
+    
+    Parameters
+    ----------
+    df : pandas DataFrame
+    
+    Returns
+    -------
+    pandas dataFrame
+    
+    """
+    
     ##### Create a new `categories` dataframe containing individual category columns. #####
     categories_from_df = df.iloc[:,-1]
     categories = categories_from_df.str.split(";", expand = True)
@@ -51,18 +72,23 @@ def clean_data(df):
     
 
 def save_data(df, database_filename):
-    ''' 
-    Saves df to sql database. 
-    The name of the database file is `database_filename`.
-    The name of the table in the database is also `database_filename` (without .db).
-    '''
+    """
+    Saves pandas dataframe to sql database.
+    
+    The name of the table in the database is `DisasterResponse'.
+    
+    Parameters
+    ----------
+    df : pandas DataFrame
+    database_filename : Name of the sql database file
+    """
     
     engine = create_engine('sqlite:///'+database_filename)
-    df.to_sql(database_filename[:-3], engine, index=False)
+    df.to_sql('DisasterResponse', engine, index=False)
 
 
 def main():
-    ''' Loads, cleans and saves data to a database'''
+    """ Loads, cleans and saves data to a database. """
     if len(sys.argv) == 4:
 
         # Collects arguments into their appropriate variables
