@@ -7,9 +7,9 @@ def load_data(database_filepath):
     table_name = table_name[:-3]
     query = 'SELECT * FROM '+ table_name
     
-    # Read query into a DataFrame
-    df = pd.read_sql(sql=query, con=engine)
-    
+    engine = create_engine('sqlite:///../data/DisasterResponse.db')
+    df = pd.read_sql_table('DisasterResponse', engine)
+       
     X = df.message.values
     category_names = [column for column in df.columns if column not in ['id', 'message', 'original', 'genre']]
     Y = df[category_names].values

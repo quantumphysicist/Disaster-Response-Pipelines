@@ -73,7 +73,7 @@ def clean_data(df):
 
 def save_data(df, database_filename):
     """
-    Saves pandas dataframe to sql database.
+    Saves pandas dataframe to SQLite database.
     
     The name of the table in the database is `DisasterResponse'.
     
