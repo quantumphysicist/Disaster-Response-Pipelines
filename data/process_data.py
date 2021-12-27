@@ -1,3 +1,9 @@
+"""
+This ETL script cleans two datasets and stores the cleaned data in a SQLite database.
+
+The messages and categories datasets are merged; the category column is split into separate, named columns; 
+the values are converted to binary; and duplicates are dropped. 
+"""
 import sys
 import pandas as pd
 from sqlalchemy import create_engine
@@ -22,7 +28,9 @@ def load_data(messages_filepath, categories_filepath):
     categories = pd.read_csv(categories_filepath)
     
     ##### Merge datasets #####
-    df = pd.concat([messages, categories], axis=1) # This effective merges on the index, avoiding problems with duplicate id values.
+    # This effective merges on the index, avoiding problems with duplicate id values.
+    df = pd.concat([messages, categories], axis=1) 
+    
     return df
 
 
@@ -30,7 +38,8 @@ def clean_data(df):
     """
     Cleans pandas dataframe `df` as follows.
     
-    1. The last column (i.e., the category column) is split up into multiple columns for each possible category.
+    1. The last column (i.e., the category column) is split up into multiple columns,
+       with a column for each possible category.
     2. Each column contains either a zero or a one.
     3. Duplicate rows are removed.
     
@@ -68,7 +77,7 @@ def clean_data(df):
     # Concatenate the original dataframe with the new `categories` dataframe.
     df = pd.concat([df, categories], axis=1)  
     df = df.drop_duplicates().reset_index() # Drop duplicates
-    return  df
+    return df
     
 
 def save_data(df, database_filename):
