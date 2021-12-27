@@ -11,18 +11,19 @@ Anaconda distribution of Python 3.0.
 
 ## Project Motivation<a name="motivation"></a>
 
-I want to show that machine learning can be used to classify messages sent during a disaster into appropriate categories, to help ensure an efficient response by the relevant agencies.
+I want to show that machine learning can be used to classify messages sent during a disaster into appropriate categories, to help ensure an efficient response by relevant agencies.
 
 ## Instructions: <a name="instructions"></a>
 1. Run the following commands in the project's root directory to set up your database and model.
 
-    - To run the ETL (Extract, Transform Load) pipeline that cleans data and stores in database
-        `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
-    - To run the ML (Machine Leazning) pipeline that trains classifier and saves
-        `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
+    - To run the ETL (Extract, Transform Load) pipeline that cleans data and stores in database  
+      `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
+        
+    - To run the ML (Machine Leazning) pipeline that trains and saves classifier  
+      `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
 
-2. Run the following command in the app's directory to run your web app.
-    `python run.py`
+2. Run the following command in the app's directory to run your web app.  
+   `python run.py`
 
 3. Go to http://0.0.0.0:3001/ (On a windows machine, this is effectively the same as http://localhost:3001/ )
 
@@ -30,23 +31,21 @@ I want to show that machine learning can be used to classify messages sent durin
 
 ### File structure
 
-- app
-| - template
-| |- master.html  # main page of the web app
-| |- go.html  # classification result page of web app
-|- run.py  # Flask file that runs app
+-- app  
+|- template  
+| |- master.html  (main page of the web app)      
+| |- go.html  (classification result page of the web app)    
+|- run.py  (Flask file that runs app)    
 
-- data
-|- disaster_categories.csv  # data to process 
-|- disaster_messages.csv  # data to process
-|- process_data.py
-|- DisasterResponse.db   # database that cleaned data is saved to
+-- data  
+|- disaster_categories.csv  (data to process)       
+|- disaster_messages.csv  (data to process)      
+|- process_data.py  (ETL script)    
+|- DisasterResponse.db   (database that cleaned data is saved to)     
 
-- models
-|- train_classifier.py
-|- classifier.pkl  # saved ML model 
-
-- README.md
+-- models  
+|- train_classifier.py (ML script)   
+|- classifier.pkl  (saved ML model)     
 
 ### Key files
 `process_data.py`
