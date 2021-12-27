@@ -35,19 +35,19 @@ I want to show that machine learning can be used to classify messages sent durin
 
 -- app  
 |- template  
-| |- master.html  # main page of the web app  
-| |- go.html  # classification result page of web app  
-|- run.py  # Flask file that runs app  
+| |- master.html  (main page of the web app)      
+| |- go.html  (classification result page of the web app)    
+|- run.py  (Flask file that runs app)    
 
 -- data  
-|- disaster_categories.csv  # data to process   
-|- disaster_messages.csv  # data to process  
-|- process_data.py  
-|- DisasterResponse.db   # database that cleaned data is saved to  
+|- disaster_categories.csv  (data to process)       
+|- disaster_messages.csv  (data to process)      
+|- process_data.py  (ETL script)    
+|- DisasterResponse.db   (database that cleaned data is saved to)     
 
 -- models  
-|- train_classifier.py  
-|- classifier.pkl  # saved ML model   
+|- train_classifier.py (ML script)   
+|- classifier.pkl  (saved ML model)     
 
 - README.md  
 
