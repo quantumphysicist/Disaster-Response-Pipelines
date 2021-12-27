@@ -33,8 +33,8 @@ I want to show that machine learning can be used to classify messages sent durin
 
 ### File structure
 
--- app
-  | - template
+-- app  
+|- template
 
 | |- master.html  # main page of the web app
 
