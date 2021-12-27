@@ -63,8 +63,6 @@ Creates a web app that can be accessed at http://localhost:3001/ .
 The web app visualises the dataset on the homepage.
 When a message is inputted into the app, the message is classified into one or more categories. 
 
-jupyter notebooks
-
 ## Licensing, Authors, and Acknowledgements <a name="licensing"></a>
 Thanks to Udacity for the idea for (and structure of) this project, and to Figure8 for making their data available.
 
