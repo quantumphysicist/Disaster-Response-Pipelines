@@ -1,6 +1,9 @@
 """
 Machine learning (ML) script that creates and trains a classifier 
-and stores the classifier in a pickle file. 
+and stores the classifier in a pickle file.
+
+Note: This script takes between 5-15 minutes to run to completion, 
+depending on the specification of the machine it is run on. 
 """
 import time # to time how long training & saving take
 
@@ -121,6 +124,8 @@ def main():
     if len(sys.argv) == 3:
         t0 = time.time()
         print('Timer started...')
+        print('Please note: This script takes between 5-15 minutes to run to completion, '\
+        'depending on the specification of the machine it is run on.')
         database_filepath, model_filepath = sys.argv[1:]
         print('Loading data...\n    DATABASE: {}'.format(database_filepath))
         X, Y, category_names = load_data(database_filepath)
