@@ -1,3 +1,7 @@
+"""
+Machine learning (ML) script that creates and trains a classifier 
+and stores the classifier in a pickle file. 
+"""
 import time # to time how long training & saving take
 
 import nltk 

@@ -1,3 +1,8 @@
+"""
+Creates a web app that can be accessed at http://localhost:3001/. 
+The web app visualises the dataset of categorized messages on the homepage. 
+When a message is inputted into the app, the message is classified into one or more categories.
+"""
 import json
 import plotly
 import pandas as pd
@@ -8,7 +13,7 @@ from nltk.tokenize import word_tokenize
 from flask import Flask
 from flask import render_template, request, jsonify
 from plotly.graph_objs import Bar
-# from sklearn.externals import joblib (Note that this is deprecated)
+#from sklearn.externals import joblib (Note that this is deprecated.)
 import joblib
 from sqlalchemy import create_engine
 
@@ -16,6 +21,9 @@ from sqlalchemy import create_engine
 app = Flask(__name__)
 
 def tokenize(text):
+    """
+    Tokenizes, lemmatizes and case normalizes each word in a piece of text.
+    """
     tokens = word_tokenize(text)
     lemmatizer = WordNetLemmatizer()
 
@@ -164,7 +172,7 @@ def go():
     classification_labels = model.predict([query])[0]
     classification_results = dict(zip(df.columns[4:], classification_labels))
 
-    # This will render the go.html Please see that file. 
+    # This will render the go.html  
     return render_template(
         'go.html',
         query=query,
