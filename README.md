@@ -68,3 +68,5 @@ jupyter notebooks
 ## Licensing, Authors, and Acknowledgements <a name="licensing"></a>
 Thanks to Udacity for the idea for (and structure of) this project, and to Figure8 for making their data available.
 
+
+![Home Page](home_screenshot.png)

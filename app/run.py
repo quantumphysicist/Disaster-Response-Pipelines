@@ -69,7 +69,7 @@ def index():
                     x=genre_names,
                     y=genre_counts,
                     width=.5,
-                    textfont = {'family' : 'Times New Roman'},
+                    textfont = {'family' : 'Arial'},
                         marker=dict(color='BlueViolet')
                 )
             ],
@@ -98,8 +98,8 @@ def index():
             y=category_counts,
             orientation = 'v',
             width=.5,
-            textfont = {'family' : 'Times New Roman'},
-                marker=dict(color='navy')
+            textfont = {'family' : 'Arial'},
+                marker=dict(color='Indigo')
         )
     ],
 
@@ -126,7 +126,7 @@ def index():
                     orientation = 'v',
                     width=.5,
                     textfont = {'family' : 'Arial'},
-                        marker=dict(color='Indigo')
+                        marker=dict(color='navy')
                 )
             ],
 
