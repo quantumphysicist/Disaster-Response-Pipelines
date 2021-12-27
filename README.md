@@ -11,7 +11,7 @@ Anaconda distribution of Python 3.0.
 
 ## Project Motivation<a name="motivation"></a>
 
-I want to show that machine learning can be used to classify messages sent during a disaster into appropriate categories, to help ensure an efficient response by the relevant agencies.
+I want to show that machine learning can be used to classify messages sent during a disaster into appropriate categories, to help ensure an efficient response by relevant agencies.
 
 ## Instructions: <a name="instructions"></a>
 1. Run the following commands in the project's root directory to set up your database and model.
