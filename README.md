@@ -59,7 +59,7 @@ For each category of the test set, the f1 score, precision and recall is outputt
 GridSearchCV is used to find the best parameters for the model.
 
 `run.py`
-Creates a web app that can be accessed at http://localhost:3001/.
+Creates a web app that can be accessed at http://localhost:3001/ .
 The web app visualises the dataset on the homepage.
 When a message is inputted into the app, the message is classified into one or more categories. 
 
