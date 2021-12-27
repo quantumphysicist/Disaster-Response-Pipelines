@@ -33,7 +33,7 @@ I want to show that machine learning can be used to classify messages sent durin
 
 ### File structure
 
-- app
+-- app
 
 | - template
 
