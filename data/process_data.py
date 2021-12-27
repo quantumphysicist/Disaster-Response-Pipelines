@@ -79,8 +79,6 @@ def clean_data(df):
     df = pd.concat([df, categories], axis=1)  
     df = df.drop_duplicates().reset_index() # Drop duplicates
     df = df.replace(2, 1) # Converts values to binary
-    (df.related.unique())
-    print(df.related.unique())
     return df
     
 
