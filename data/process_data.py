@@ -5,6 +5,7 @@ The messages and categories datasets are merged; the category column is split in
 the values are converted to binary; and duplicates are dropped. 
 """
 import sys
+import os
 import pandas as pd
 from sqlalchemy import create_engine
 
@@ -91,6 +92,12 @@ def save_data(df, database_filename):
     df : pandas DataFrame
     database_filename : Name of the sql database file
     """
+    
+    # Remove the SQLite database if it already exists
+    if os.path.exists("DisasterResponse.db"):
+        os.remove("DisasterResponse.db")
+    else:
+        pass
     
     engine = create_engine('sqlite:///'+database_filename)
     df.to_sql('DisasterResponse', engine, index=False)
