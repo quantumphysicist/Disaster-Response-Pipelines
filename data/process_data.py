@@ -78,6 +78,9 @@ def clean_data(df):
     # Concatenate the original dataframe with the new `categories` dataframe.
     df = pd.concat([df, categories], axis=1)  
     df = df.drop_duplicates().reset_index() # Drop duplicates
+    df = df.replace(2, 1) # Converts values to binary
+    (df.related.unique())
+    print(df.related.unique())
     return df
     
 
@@ -94,13 +97,13 @@ def save_data(df, database_filename):
     """
     
     # Remove the SQLite database if it already exists
-    if os.path.exists("DisasterResponse.db"):
-        os.remove("DisasterResponse.db")
-    else:
-        pass
+    #if os.path.exists("./data/DisasterResponse.db"):
+    #    os.remove("DisasterResponse.db")
+    #else:
+    #    pass
     
     engine = create_engine('sqlite:///'+database_filename)
-    df.to_sql('DisasterResponse', engine, index=False)
+    df.to_sql('DisasterResponse', engine, index=False, if_exists='replace')
 
 
 def main():
