@@ -34,31 +34,22 @@ I want to show that machine learning can be used to classify messages sent durin
 ### File structure
 
 -- app  
-|- template
+|- template  
+| |- master.html  # main page of the web app  
+| |- go.html  # classification result page of web app  
+|- run.py  # Flask file that runs app  
 
-| |- master.html  # main page of the web app
+-- data  
+|- disaster_categories.csv  # data to process   
+|- disaster_messages.csv  # data to process  
+|- process_data.py  
+|- DisasterResponse.db   # database that cleaned data is saved to  
 
-| |- go.html  # classification result page of web app
+-- models  
+|- train_classifier.py  
+|- classifier.pkl  # saved ML model   
 
-|- run.py  # Flask file that runs app
-
--- data
-
-|- disaster_categories.csv  # data to process 
-
-|- disaster_messages.csv  # data to process
-
-|- process_data.py
-
-|- DisasterResponse.db   # database that cleaned data is saved to
-
--- models
-
-|- train_classifier.py
-
-|- classifier.pkl  # saved ML model 
-
-- README.md
+- README.md  
 
 ### Key files
 `process_data.py`
