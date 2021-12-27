@@ -43,7 +43,7 @@ I want to show that machine learning can be used to classify messages sent durin
 
 |- run.py  # Flask file that runs app
 
-- data
+-- data
 
 |- disaster_categories.csv  # data to process 
 
@@ -53,7 +53,7 @@ I want to show that machine learning can be used to classify messages sent durin
 
 |- DisasterResponse.db   # database that cleaned data is saved to
 
-- models
+-- models
 
 |- train_classifier.py
 
