@@ -10,7 +10,7 @@ import time # to time how long training & saving take
 import nltk 
 import sys
 import pandas as pd
-import pickle # for saving the serialized ML model to a file.\n",
+import pickle # for saving the serialized ML model to a file.
 from sqlalchemy import create_engine
 
 from nltk.tokenize import word_tokenize
@@ -72,7 +72,7 @@ def build_model():
     """
     Returns a pipeline that processes text and classifies the text into the correct categories.
     
-    Uses GridSearchCV to pind the best parameters.
+    Uses GridSearchCV to find the best parameters.
     """
     
     pipeline = Pipeline([
