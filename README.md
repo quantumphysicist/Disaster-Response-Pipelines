@@ -16,10 +16,10 @@ I want to show that machine learning can be used to classify messages sent durin
 ## Instructions: <a name="instructions"></a>
 1. Run the following commands in the project's root directory to set up your database and model.
 
-    - To run the ETL (Extract, Transform Load) pipeline that cleans data and stores in database  
+    - To run the ETL (Extract, Transform Load) pipeline that cleans data and stores in a database  
       `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
         
-    - To run the ML (Machine Leazning) pipeline that trains and saves classifier  
+    - To run the ML (Machine Learning) pipeline that trains and saves classifier  
       `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
 
 2. Run the following command in the app's directory to run your web app.  
@@ -49,18 +49,18 @@ I want to show that machine learning can be used to classify messages sent durin
 
 ### Key files
 `process_data.py`
-ETL script. This ETL script cleans two datasets and stores the cleaned data in a SQLite database (`DisasterResponse.db`). 
-The messages and categories datasets are merged; the category column is split into separate, named columns; the values are converted to binary; and duplicates are dropped. 
+ETL script. This ETL script cleans two datasets and stores the cleaned data in an SQLite database (`DisasterResponse.db`). 
+The messages and categories datasets are merged; the category column is split into separate, named columns; the values are converted to binary; duplicates are dropped. 
 
 `train_classifier.py`
 ML script. This ML script creates and trains a classifier and stores the classifier in a pickle file (`classifier.pkl`).
 The script builds a pipeline to process text and classifies the text into the categories of the dataset (where more than one category is possible.)
-For each category of the test set, the f1 score, precision and recall is outputted.
+For each category of the test set, the f1 score, precision, and recall are outputted.
 GridSearchCV is used to find the best parameters for the model.
 
 `run.py`
 Creates a web app that can be accessed at http://localhost:3001/ .
-The web app visualises the dataset on the homepage.
+The web app visualizes the dataset on the homepage.
 When a message is inputted into the app, the message is classified into one or more categories. 
 
 ## Licensing, Authors, and Acknowledgements <a name="licensing"></a>
