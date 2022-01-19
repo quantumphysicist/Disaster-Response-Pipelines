@@ -31,19 +31,19 @@ I want to show that machine learning can be used to classify messages sent durin
 
 ### File structure
 .
-├── app
-|   ├── run.py  (Flask file that runs app)
-|   └── template  
-|       ├── master.html  (main page of the web app)      
-|       └── go.html  (classification result page of the web app)        
-├── data  
-│   ├── disaster_categories.csv  (data to process)       
-│   ├── disaster_messages.csv  (data to process)      
-│   ├── process_data.py  (ETL script)    
-│   └── DisasterResponse.db   (database that cleaned data is saved to)     
+├── app  
+|   ├── run.py  (Flask file that runs app)  
+|   └── template     
+|       ├── master.html  (main page of the web app)        
+|       └── go.html  (classification result page of the web app)          
+├── data    
+│   ├── disaster_categories.csv  (data to process)         
+│   ├── disaster_messages.csv  (data to process)        
+│   ├── process_data.py  (ETL script)      
+│   └── DisasterResponse.db   (database that cleaned data is saved to)       
 └── models  
-    ├──train_classifier.py (ML script)   
-    └── classifier.pkl  (saved ML model)     
+    ├──train_classifier.py (ML script)     
+    └── classifier.pkl  (saved ML model)       
 
 ### Key files
 `process_data.py`
