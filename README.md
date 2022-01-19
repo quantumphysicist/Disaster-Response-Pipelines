@@ -1,4 +1,4 @@
-# Machine Learning Pipeline: Disaster Response
+# Machine Learning Pipelines: Disaster Response
 
 ### Table of Contents
 
