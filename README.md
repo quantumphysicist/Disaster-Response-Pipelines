@@ -25,7 +25,7 @@ I want to show that machine learning can be used to classify messages sent durin
 2. Run the following command in the app's directory to run your web app.  
    `python run.py`
 
-3. Go to http://0.0.0.0:3001/ (On a windows machine, this is effectively the same as http://localhost:3001/ )
+3. Go to http://127.0.0.1:3001/ or http://localhost:3001/
 
 ## File Descriptions <a name="files"></a>
 
